@@ -22,12 +22,14 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             map
-          HStack {
-            clearButton
-            startButton
-            stopButton
+          VStack {
             LocationButton(.currentLocation) {
               viewModel.requestAllowOnceLocationPermission()
+            }
+            HStack {
+              clearButton
+              startButton
+              stopButton
             }
           }
         }
@@ -97,7 +99,7 @@ struct ContentView: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    clearAllLocations()
+                    stopTracking()
                 }, label: {
                     Image(systemName: "stop")
                         .font(.system(.title2))
@@ -117,6 +119,11 @@ struct ContentView: View {
   private func startTracking() {
     print("Start Tracking button pressed")
     viewModel.startLocationTracking()
+  }
+  
+  private func stopTracking() {
+    print("Stop Tracking button pressed")
+    viewModel.stopLocationTracking()
   }
     
     private func clearAllLocations() {
@@ -184,9 +191,12 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
   func startLocationTracking() {
     locationManager.startUpdatingLocation()
     print("startLocationTracking pressed")
-    
   }
-
+  
+  func stopLocationTracking() {
+    locationManager.stopUpdatingLocation()
+    print("stopLocationTracking pressed")
+  }
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let latestLocation = locations.first else {
