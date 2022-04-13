@@ -4,7 +4,6 @@ import SwiftUI
 @main
 struct LocationTrackerApp: App {
     let locationPublisher = LocationPublisher()
-//  let locationPublisher = ContentView.viewModel2
     var cancellables = [AnyCancellable]()
     
     init() {

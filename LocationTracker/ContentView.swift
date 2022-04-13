@@ -17,7 +17,6 @@ struct ContentView: View {
 
     // MARK: TEMP
     @StateObject var viewModel = ContentViewModel() // Links Class from bottom
-    //@StateObject var viewModel2 = LocationPublisher() // Links Class from bottom
   
     var body: some View {
         ZStack {
@@ -143,33 +142,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-//final class LocationPublisher: NSObject, ObservableObject, CLLocationManagerDelegate {
-//    typealias Output = (longitude: Double, latitude: Double)
-//    typealias Failure = Never
-//    private let wrapped = PassthroughSubject<(Output), Failure>()
-//    private let locationManager = CLLocationManager()
-//
-//    override init() {
-//        super.init()
-//        self.locationManager.delegate = self
-//        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        self.locationManager.activityType = .fitness
-//        //self.locationManager.requestAlwaysAuthorization()
-//        self.locationManager.allowsBackgroundLocationUpdates = true
-//        self.locationManager.pausesLocationUpdatesAutomatically = false // throws "Non-UI clients cannot be autopaused"
-//        //self.locationManager.startUpdatingLocation()
-//    }
-//
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        guard let location = locations.last else { return }
-//        wrapped.send((longitude: location.coordinate.longitude, latitude: location.coordinate.latitude))
-//    }
-//
-//    func receive<Downstream: Subscriber>(subscriber: Downstream) where Failure == Downstream.Failure, Output == Downstream.Input {
-//        wrapped.subscribe(subscriber)
-//    }
-//}
-
+// ViewModel Class
 final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
   
   @Published var region = MKCoordinateRegion(

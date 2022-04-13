@@ -19,7 +19,7 @@ class LocationPublisher: NSObject {
         //self.locationManager.requestAlwaysAuthorization()
         self.locationManager.allowsBackgroundLocationUpdates = true
         self.locationManager.pausesLocationUpdatesAutomatically = false // throws "Non-UI clients cannot be autopaused"
-        //self.locationManager.startUpdatingLocation()
+        self.locationManager.startUpdatingLocation()
     }
   
   
