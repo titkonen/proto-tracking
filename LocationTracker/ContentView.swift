@@ -116,15 +116,15 @@ struct ContentView: View {
     }
   
     // MARK: Functions
-  private func startTracking() {
-    print("Start Tracking button pressed")
-    viewModel.startLocationTracking()
-  }
-  
-  private func stopTracking() {
-    print("Stop Tracking button pressed")
-    viewModel.stopLocationTracking()
-  }
+    private func startTracking() {
+      print("Start Tracking button pressed")
+      viewModel.startLocationTracking()
+    }
+    
+    private func stopTracking() {
+      print("Stop Tracking button pressed")
+      viewModel.stopLocationTracking()
+    }
     
     private func clearAllLocations() {
         locations.forEach(viewContext.delete)
